@@ -1,11 +1,12 @@
 const express = require('express');
-const mongoose = require('mongoose');
-
+const connection = require('./dbConnection');
+// routes
+const messageRoutes = require('./routes/MessageRoutes');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.status(200).send({message: 'Hello'});
-});
+// middleware
+app.use(express.json());
+app.use('/api/v1', messageRoutes);
 
 const port = process.env.PORT || 9000;
 
