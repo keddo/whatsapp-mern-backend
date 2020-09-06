@@ -5,7 +5,13 @@ const messages = require('../models/Message');
 const router = express.Router();
 
 router.get('/messages', (req, res) => {
-   res.status(200).send({message: 'Hello!'});
+   messages.find((err, data) => {
+       if(err){
+          res.status(500).send(err);
+       }else{
+           res.status(200).send(data);
+       }
+   })
 });
 
 router.post('/messages', (req, res) => {
