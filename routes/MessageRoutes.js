@@ -7,9 +7,9 @@ const router = express.Router();
 router.get('/messages', (req, res) => {
    messages.find((err, data) => {
        if(err){
-          res.status(500).send(err);
+         return res.status(500).send(err);
        }else{
-           res.status(200).send(data);
+         return res.status(200).send(data);
        }
    })
 });
